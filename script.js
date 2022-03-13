@@ -1,6 +1,12 @@
 function computerPlay (){
-    const selection = ["Rock", "Paper", "Scissors"];
+    const selection = ["rock", "paper", "scissors"];
     return selection[Math.floor(Math.random()* selection.length)];
 }
 
-console.log (computerPlay())
+let computerSelection = computerPlay();
+
+console.log (computerSelection);
+
+var playerSelection = prompt("Enter rock, paper or scissors.").toLowerCase();
+
+console.log (playerSelection);
