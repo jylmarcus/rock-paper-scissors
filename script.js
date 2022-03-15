@@ -1,18 +1,12 @@
 const selection = ["rock", "paper", "scissors"];
+let computerSelection;
+let playerSelection;
 
 function computerPlay (){
     return selection[Math.floor(Math.random()* selection.length)];
 }
 
-let computerSelection = computerPlay();
-
-console.log (computerSelection);
-
-var playerSelection = prompt("Enter rock, paper or scissors.").toLowerCase();
-
-console.log (playerSelection);
-
-function rps(player, computer){
+function playRPS(player, computer){
     player = selection.indexOf(player);
     computer = selection.indexOf(computer);
 
@@ -29,4 +23,12 @@ function rps(player, computer){
     }
 }
 
-console.log (rps(playerSelection, computerSelection));
+function game(){
+    for (round = 1, round <= 5, round++){
+        console.log(`Round ${round}`);
+        playerSelection = prompt("Enter rock, paper or scissors.").toLowerCase();
+        computerSelection = computerPlay();
+        console.log(playRPS(playerSelection, computerSelection));
+    }
+}
+game();
