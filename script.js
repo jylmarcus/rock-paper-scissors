@@ -24,7 +24,7 @@ function playRPS(player, computer){
 }
 
 function game(){
-    for (round = 1, round <= 5, round++){
+    for (round = 1; round <= 5; round++){
         console.log(`Round ${round}`);
         playerSelection = prompt("Enter rock, paper or scissors.").toLowerCase();
         computerSelection = computerPlay();
