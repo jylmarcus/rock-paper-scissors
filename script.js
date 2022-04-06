@@ -9,10 +9,13 @@ function showId(){
 }
 
 const buttons = document.querySelectorAll(".rps");
-console.log(buttons);
 buttons.forEach(function(currentBtn){
     currentBtn.addEventListener("click", playRPS);
 })
+
+const playerScore = document.querySelector("#playerScore");
+const cpuScore = document.querySelector("#cpuScore");
+const resultText = document.querySelector("#pResult");
 
 function playRPS(){
     let player = selection.indexOf(this.id);
@@ -21,13 +24,13 @@ function playRPS(){
     let result = player - computer;
 
     if (result == 0) {
-        console.log(`Tie! The computer picked ${selection[computer]}.`);
+        resultText.innerHTML = `Tie! The computer picked ${selection[computer]}.`;
     } else if (result == -1 || result == (selection.length-1)) {
         let winningSelection = selection[computer].charAt(0).toUpperCase() + selection[computer].slice(1);
-        console.log(`You lose! ${winningSelection} beats ${selection[player]}.`);
+        resultText.innerHTML = `You lose! ${winningSelection} beats ${selection[player]}.`;
     } else if (result == 1 || result == (-1*(selection.length-1))){
         let winningSelection = selection[player].charAt(0).toUpperCase() + selection[player].slice(1)
-        console.log(`You win! ${winningSelection} beats ${selection[computer]}!`);
+        resultText.innerHTML = `You win! ${winningSelection} beats ${selection[computer]}!`;
     }
 }
 
