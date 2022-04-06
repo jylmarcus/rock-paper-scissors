@@ -16,6 +16,7 @@ buttons.forEach(function(currentBtn){
 const playerScore = document.querySelector("#playerScore");
 const cpuScore = document.querySelector("#cpuScore");
 const resultText = document.querySelector("#pResult");
+const matchResult = document.querySelector("#matchResult");
 
 function playRPS(){
     let player = selection.indexOf(this.id);
@@ -28,9 +29,19 @@ function playRPS(){
     } else if (result == -1 || result == (selection.length-1)) {
         let winningSelection = selection[computer].charAt(0).toUpperCase() + selection[computer].slice(1);
         resultText.innerHTML = `You lose! ${winningSelection} beats ${selection[player]}.`;
+        cpuScore.innerHTML = parseInt(cpuScore.innerHTML) + 1;
     } else if (result == 1 || result == (-1*(selection.length-1))){
         let winningSelection = selection[player].charAt(0).toUpperCase() + selection[player].slice(1)
         resultText.innerHTML = `You win! ${winningSelection} beats ${selection[computer]}!`;
+        playerScore.innerHTML = parseInt(playerScore.innerHTML) + 1;
+    }
+
+    if (parseInt(playerScore.innerHTML) == 5) {
+        matchResult.innerHTML = "You have won the match!"
+    } else if (parseInt(cpuScore.innerHTML) == 5) {
+        matchResult.innerHTML = "You have lost the match!"
+    } else {
+        return;
     }
 }
 
