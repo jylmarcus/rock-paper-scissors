@@ -11,24 +11,23 @@ function showId(){
 const buttons = document.querySelectorAll(".rps");
 console.log(buttons);
 buttons.forEach(function(currentBtn){
-    currentBtn.addEventListener("click", showId);
+    currentBtn.addEventListener("click", playRPS);
 })
 
-
-function playRPS(player){
-    player = selection.indexOf(player);
-    computer = selection.indexOf(computerPlay());
+function playRPS(){
+    let player = selection.indexOf(this.id);
+    let computer = selection.indexOf(computerPlay());
 
     let result = player - computer;
 
     if (result == 0) {
-        return `Tie! The computer picked ${selection[computer]}.`;
+        console.log(`Tie! The computer picked ${selection[computer]}.`);
     } else if (result == -1 || result == (selection.length-1)) {
         let winningSelection = selection[computer].charAt(0).toUpperCase() + selection[computer].slice(1);
-        return `You lose! ${winningSelection} beats ${selection[player]}.`;
+        console.log(`You lose! ${winningSelection} beats ${selection[player]}.`);
     } else if (result == 1 || result == (-1*(selection.length-1))){
         let winningSelection = selection[player].charAt(0).toUpperCase() + selection[player].slice(1)
-        return `You win! ${winningSelection} beats ${selection[computer]}!`;
+        console.log(`You win! ${winningSelection} beats ${selection[computer]}!`);
     }
 }
 
